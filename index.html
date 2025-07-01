@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>قائمة الطعام</title> 
+    <title>مطعم غضن الذوق  - قائمة شاملة</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -28,7 +28,7 @@
             background-color: #fffaf0;
             color: #4a3b31;
             line-height: 1.6;
-            overflow-x: hidden; 
+            overflow-x: hidden; /* <<---  منع التمرير الأفقي للصفحة  ---<< */
         }
         .navbar {
             background-color: #982f34; color: white; padding: 12px 20px;
@@ -51,8 +51,8 @@
         }
         .container {
             max-width: 1100px;
-            margin-left: auto; 
-            margin-right: auto; 
+            margin-left: auto; /* لضمان التوسيط */
+            margin-right: auto; /* لضمان التوسيط */
             padding-left: 15px;
             padding-right: 15px;
             margin-top: 20px;
@@ -151,7 +151,7 @@
             display: flex;
             flex-wrap: nowrap;
             gap: 8px;
-            padding-bottom: 5px; 
+            padding-bottom: 5px;
         }
         .filter-btn {
             background-color: #fff; color: #8c533e; border: 1px solid #e0c4a0;
@@ -159,8 +159,8 @@
             font-size: 0.95em; font-family: 'Cairo', sans-serif;
             transition: background-color 0.3s, color 0.3s, transform 0.2s, box-shadow 0.2s;
             box-shadow: 0 1px 2px rgba(0,0,0,0.05);
-            white-space: nowrap; 
-            flex-shrink: 0; 
+            white-space: nowrap;
+            flex-shrink: 0;
         }
         .filter-btn:hover {
             background-color: #e0c4a0; color: #4a3b31; transform: translateY(-2px);
@@ -206,7 +206,7 @@
         }
         .product-card:hover { transform: translateY(-3px); box-shadow: 0 4px 10px rgba(0,0,0,0.09); }
         .product-card img {
-            width: 100%; height: 180px; object-fit: cover; 
+            width: 100%; height: 300px; object-fit: cover;
             margin-bottom: 10px; border-radius: 5px;
             transition: height 0.3s ease;
         }
@@ -214,18 +214,11 @@
             margin-top: 0; margin-bottom: 8px; font-size: 1.05em; color: #4a3b31;
             flex-grow: 1; line-height: 1.3;
             transition: font-size 0.3s ease;
-             min-height: 2.6em; 
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-            text-overflow: ellipsis;
         }
         .product-description {
             font-size: 0.8em; color: #777; margin-bottom: 10px; line-height: 1.4;
-            min-height: 2.8em; 
-            display: -webkit-box; -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;  overflow: hidden; text-overflow: ellipsis;
+            min-height: 38px; display: -webkit-box; -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;  overflow: hidden;
             transition: font-size 0.3s ease, min-height 0.3s ease, -webkit-line-clamp 0.3s ease;
         }
         .product-card .price { font-size: 0.95em; margin-bottom: 10px; font-weight:bold; color:#27ae60;}
@@ -235,12 +228,12 @@
             padding: 9px 12px; font-size: 0.9em;
             border-radius: 6px; cursor: pointer;
             transition: background-color 0.3s, padding 0.3s ease, font-size 0.3s ease;
-            width: 100%; margin-top: auto; 
-            display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+            width: 100%; margin-top: auto;
         }
         .product-card .customize-btn:hover,
         .product-card .direct-add-btn:hover { background-color: #d35400; }
-
+        .product-card .customize-btn i,
+        .product-card .direct-add-btn i { margin-right: 6px; }
 
         /* --- Compact View Styles --- */
         body.compact-view .products-grid {
@@ -251,17 +244,16 @@
             padding: 10px;
         }
         body.compact-view .product-card img {
-            height: 110px; 
+            height: 160px;
             margin-bottom: 8px;
         }
         body.compact-view .product-card h3 {
             font-size: 0.95em;
             margin-bottom: 5px;
-            min-height: 2.2em; 
         }
         body.compact-view .product-description {
             font-size: 0.75em;
-            min-height: 2.5em; 
+            min-height: 30px;
             -webkit-line-clamp: 2;
             margin-bottom: 8px;
         }
@@ -290,7 +282,7 @@
             overflow-y: auto; position: relative; animation: fadeInModal 0.3s ease-out;
         }
         .modal-close-btn {
-            position: absolute; top: 10px; left: 10px; 
+            position: absolute; top: 10px; left: 10px;
             background: none; border: none; font-size: 1.8em;
             color: #7f8c8d; cursor: pointer; line-height: 1; padding: 5px;
         }
@@ -317,21 +309,15 @@
         .modal-quantity-controls input[type="number"] {
             width: 60px; padding: 8px; text-align: center;
             border: 1px solid #ccc; border-radius: 5px; font-size: 1em; margin: 0 8px;
-            -moz-appearance: textfield;
-        }
-        .modal-quantity-controls input[type="number"]::-webkit-outer-spin-button,
-        .modal-quantity-controls input[type="number"]::-webkit-inner-spin-button {
-            -webkit-appearance: none;
-            margin: 0;
         }
         .modal-add-to-cart-btn {
             background-color: #982f34; color: white; border: none; padding: 12px 20px;
             text-align: center; display: block; width: 100%;
             font-size: 1.1em; border-radius: 6px; cursor: pointer;
             transition: background-color 0.3s;
-            display: inline-flex; align-items: center; justify-content: center; gap: 8px;
         }
         .modal-add-to-cart-btn:hover { background-color: #d35400; }
+        .modal-add-to-cart-btn i { margin-left: 8px; }
 
         /* --- Cart Sidebar (Responsive) --- */
         .cart-sidebar {
@@ -365,12 +351,9 @@
         .cart-item-actions { display: flex; flex-direction: column; align-items: flex-end; flex-shrink: 0; }
         .cart-item-actions .item-total-price { font-weight: bold; margin-bottom: 6px; font-size: 1em; }
         .remove-item-btn {
-            background-color: #e74c3c !important; color: white !important; border: none; padding: 5px 8px !important;
+            background-color: #982f34 !important; color: white; border: none; padding: 5px 8px !important;
             font-size: 0.8em !important; border-radius: 4px; cursor: pointer;
-            transition: background-color 0.2s;
         }
-        .remove-item-btn:hover { background-color: #c0392b !important; }
-
         .cart-sidebar-footer {
             border-top: 1px solid #eee; padding-top: 15px; flex-shrink: 0;
         }
@@ -378,10 +361,11 @@
         .delivery-options label { margin: 0 8px; cursor: pointer; font-size: 0.9em;}
         .delivery-options input[type="radio"] { margin-left: 4px; transform: scale(0.9); vertical-align: middle; }
         
+        /* --- تمت الإضافة هنا --- */
         .table-selection-container {
             margin-bottom: 12px;
             text-align: center;
-            display: none; 
+            display: none; /* مخفي افتراضيًا */
         }
         .table-selection-container label {
             font-size: 0.9em;
@@ -395,8 +379,8 @@
             border-radius: 5px;
             font-family: 'Cairo', sans-serif;
             font-size: 0.9em;
-            background-color: white;
         }
+        /* --- نهاية الإضافة --- */
 
         .cart-sidebar-footer textarea {
             width: 100%; padding: 8px; margin-bottom: 12px; border: 1px solid #ccc;
@@ -407,23 +391,20 @@
         .summary-line.vat-line { font-size: 0.85em; color: #555; }
         .summary-line.total { font-weight: bold; font-size: 1.2em; color: #982f34; margin-top:8px;}
         .cart-actions { display: flex; flex-direction: column; gap: 8px; margin-top: 12px; }
-        .checkout-btn-whatsapp, .clear-cart-btn {
-             width: 100%; border: none;
+        .checkout-btn-whatsapp {
+            width: 100%; background-color: #25D366; color: white; border: none;
             padding: 12px 18px; font-size: 1em; border-radius: 6px;
-            display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-            transition: background-color 0.3s;
         }
-        .checkout-btn-whatsapp { background-color: #25D366; color: white; }
-        .checkout-btn-whatsapp:hover { background-color: #1da851;}
-        .clear-cart-btn { background-color: #95a5a6; color: white; font-size: 0.9em; }
-        .clear-cart-btn:hover { background-color: #7f8c8d;}
-
+        .clear-cart-btn {
+            width: 100%; background-color: #95a5a6; color: white; font-size: 0.9em;
+            padding: 8px 12px; border-radius: 6px;
+        }
         #empty-cart-message { text-align: center; color: #7f8c8d; font-size: 1em; padding: 15px; }
 
         .page-overlay {
             display: none; position: fixed; top: 0; left: 0;
             width: 100%; height: 100%; background-color: rgba(0,0,0,0.5);
-            z-index: 1001; 
+            z-index: 1001;
         }
         .page-overlay.active { display: block; }
 
@@ -433,9 +414,9 @@
             box-shadow: 0 4px 8px rgba(0,0,0,0.2); z-index: 1003;
             opacity: 0; visibility: hidden;
             transition: opacity 0.3s ease, visibility 0.3s ease, bottom 0.3s ease; font-size: 1em;
-            display: flex; align-items: center; gap: 8px;
         }
         .notification-toast.show { opacity: 1; visibility: visible; bottom: 30px; }
+        .notification-toast i { margin-right: 8px; }
 
         /* --- Footer Styling --- */
         .site-footer {
@@ -456,7 +437,7 @@
         }
         .footer-logo-area,
         .footer-contact-info,
-        .footer-social-links { 
+        .footer-social-links {
             flex: 1;
             min-width: 250px;
             padding: 0 15px;
@@ -490,8 +471,11 @@
             margin-bottom: 8px;
             line-height: 1.7;
             color: #e0e0e0;
-            display: flex; align-items: center; justify-content: center; 
-            gap: 8px;
+        }
+        .footer-contact-info p i {
+            margin-left: 8px;
+            color: #982f34;
+            width: 20px;
         }
         .footer-social-links a {
             color: #fffaf0;
@@ -511,25 +495,6 @@
             color: #e0c4a0;
         }
 
-        #page-loading-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(255, 250, 240, 0.95); 
-            z-index: 9999;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 1.5em;
-            color: #982f34;
-            text-align: center;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-
         @media (max-width: 768px) {
             .footer-content {
                 flex-direction: column;
@@ -546,9 +511,11 @@
             .footer-social-links h4 {
                 display: block;
             }
+             /* تمت الإضافة هنا */
             .table-selection-container select {
                 width: 80%;
             }
+            /* نهاية الإضافة */
         }
         @media (min-width: 600px) {
             .products-grid {
@@ -556,11 +523,12 @@
                  gap: 20px;
             }
             .product-card img { height: 150px; }
-            .product-card h3 { font-size: 1.15em; min-height: 2.8em;}
-            .product-description { font-size: 0.85em; min-height: 3em; }
+            .product-card h3 { font-size: 1.15em; }
+            .product-description { font-size: 0.85em; min-height: 40px; }
             .product-card .price { font-size: 1.05em; }
             .product-card .customize-btn, .product-card .direct-add-btn { font-size: 0.95em; padding: 10px 15px;}
 
+            /* Compact view for larger screens */
             body.compact-view .products-grid {
                 grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
             }
@@ -568,7 +536,7 @@
                 height: 110px;
             }
             body.compact-view .product-card h3 {
-                font-size: 1em; min-height: 2.4em;
+                font-size: 1em;
             }
 
             .cart-sidebar { width: 400px; right: -420px; }
@@ -595,14 +563,9 @@
     </style>
 </head>
 <body>
-    <div id="page-loading-overlay">
-        <div id="loading-text">جاري تحميل قائمة الطعام اللذيذة...</div>
-        <i class="fas fa-spinner fa-spin fa-2x"></i>
-    </div>
-
     <div class="modal-overlay" id="customization-modal-overlay">
         <div class="modal-content" id="customization-modal-content">
-            <button class="modal-close-btn" id="modal-close-btn" aria-label="إغلاق">&times;</button>
+            <button class="modal-close-btn" id="modal-close-btn">×</button>
             <img src="" alt="Product Image" class="modal-product-image" id="modal-product-image">
             <h2 class="modal-product-title" id="modal-product-title"></h2>
             <p class="modal-product-base-price" id="modal-product-base-price"></p>
@@ -620,7 +583,7 @@
     <div class="page-overlay" id="page-overlay"></div>
 
     <nav class="navbar">
-        <a href="#" class="navbar-brand"> <i class="fas fa-utensils"></i></a> 
+        <a href="#" class="navbar-brand">مطعم غضن الذوق <i class="fas fa-utensils"></i></a>
         <button class="cart-toggle-button" id="cart-toggle-btn" aria-label="فتح سلة التسوق">
             <i class="fas fa-shopping-basket"></i>
             <span class="cart-count-badge" id="cart-count-badge">0</span>
@@ -628,6 +591,9 @@
     </nav>
 
     <div class="container">
+
+             
+     
         <h1 class="page-title">قائمة الطعام </h1>
 
         <div class="search-and-view-controls">
@@ -642,22 +608,23 @@
 
         <div class="filters-container-wrapper">
             <div class="filters-container" id="filters-container">
+                <!-- أزرار الفلاتر ستُضاف هنا بواسطة JavaScript -->
             </div>
         </div>
 
         <div id="menu-sections">
-             <p id="no-products-message" style="text-align:center; padding: 20px; color: #777; display:none;">لا توجد منتجات تطابق بحثك أو الفلتر الحالي.</p>
+            <!-- أقسام التصنيفات والمنتجات ستُضاف هنا -->
         </div>
     </div>
 
     <aside class="cart-sidebar" id="cart-sidebar">
         <div class="cart-sidebar-header">
             <h2>طلباتك</h2>
-            <button class="close-cart-btn-sidebar" id="close-cart-btn-sidebar" aria-label="إغلاق السلة">&times;</button>
+            <button class="close-cart-btn-sidebar" id="close-cart-btn-sidebar" aria-label="إغلاق السلة">×</button>
         </div>
         <div class="cart-items-list-container">
             <ul id="cart-items-list" class="cart-items-list">
-                <li id="empty-cart-message" style="display: list-item;">سلة الطلبات فارغة.</li>
+                <li id="empty-cart-message">سلة الطلبات فارغة.</li>
             </ul>
         </div>
         <div class="cart-sidebar-footer">
@@ -667,12 +634,15 @@
                 <label><input type="radio" name="deliveryType" value="dine_in"> محلي </label>
             </div>
 
+            <!-- تمت الإضافة هنا: حاوية اختيار الطاولة -->
             <div class="table-selection-container" id="table-selection-container">
                 <label for="table-number-select">اختر رقم الطاولة:</label>
                 <select id="table-number-select">
                     <option value="">-- اختر الطاولة --</option>
+                    <!-- أرقام الطاولات ستُضاف هنا بواسطة JavaScript -->
                 </select>
             </div>
+            <!-- نهاية الإضافة -->
 
             <textarea id="general-order-notes" placeholder="ملاحظات إضافية على الطلب"></textarea>
 
@@ -681,7 +651,7 @@
                 <span id="cart-subtotal-amount">0</span> ريال
             </div>
             <div class="summary-line vat-line" id="vat-line-details" style="display: none;">
-                <span>ضريبة القيمة المضافة (<span id="vat-rate-display">15</span>%):</span>
+                <span>ضريبة القيمة المضافة (15%):</span>
                 <span id="cart-vat-amount">0</span> ريال
             </div>
 
@@ -695,7 +665,7 @@
             </div>
             <div class="cart-actions">
                 <button class="checkout-btn-whatsapp" id="checkout-btn">
-                    إرسال الطلب عبر واتساب <i class="fab fa-whatsapp"></i>
+                    إرسال الطلب عبر واتساب
                 </button>
                 <button class="clear-cart-btn" id="clear-cart-btn">
                     إفراغ السلة <i class="fas fa-times-circle"></i>
@@ -708,46 +678,301 @@
         <i class="fas fa-bell"></i> <span id="notification-message"></span>
     </div>
 
+    <!-- ===== Footer Section ===== -->
     <footer class="site-footer">
         <div class="footer-content container">
             <div class="footer-logo-area">
-                <h3 class="footer-restaurant-name"> </h3> 
-                <p class="footer-tagline"></p> 
+                <h3 class="footer-restaurant-name">مطعم غضن الذوق </h3>
+                
             </div>
-			 <div class="footer-social-links">
+			<div class="footer-social-links">
                 <h4>تابعنا</h4>
 				 <a href="https://www.tiktok.com/@ghusn.althouq" aria-label="تيك توك"><i class="fa-brands fa-tiktok"></i></a>
 				 <a href="https://maps.app.goo.gl/VGez6aNqSanSn5P17" aria-label="ماب"><i class="fa-solid fa-location-dot"></i></a>
                  </div>
             <div class="footer-contact-info">
                 <h4>تواصل معنا:</h4>
-				
-                <p><i class="fas fa-map-marker-alt"></i> <span id="footer-address"></span></p> 
-                <p><i class="fas fa-phone-alt"></i> جوال :<span id="footer-phone"></span></p> 
+                <p><i class="fas fa-map-marker-alt"></i>ابها - طريق الجامعة</p>
+                <p><i class="fas fa-phone-alt"></i> جوال:0538396355</p>
+ 
             </div>
+           
         </div>
         <div class="footer-bottom">
-            <p>© <span id="current-year"></span> جميع الحقوق محفوظة لـ <span class="footer-restaurant-name-bottom"></span>.</p> 
+            <p>© <span id="current-year"></span> جميع الحقوق محفوظة لحاجب سوفت .</p>
         </div>
     </footer>
+    <!-- ===== End Footer Section ===== -->
 
     <script>
-        const GOOGLE_SCRIPT_API_URL = "https://script.google.com/macros/s/AKfycbx4m8qhBuJ9Rcq0ecMQh-IM7TPn183p-mFvWjojzKyEgJxpjE2JlNA42A1-KYQt3MoJ/exec"; 
+        const deliveryFee = 5;
+        const CART_STORAGE_KEY = 'restaurantAppCart_vFinalCompleteWithFooterFixed';
+        const VAT_RATE = 0.15;
+        const COMPACT_VIEW_STORAGE_KEY = 'restaurantApp_compactView'; // لتخزين تفضيل العرض
+        const MAX_TABLE_NUMBER = 10; // أقصى رقم طاولة
 
-        const CART_STORAGE_KEY = 'restaurantAppCart_vDynamicFinal_2'; 
-        const COMPACT_VIEW_STORAGE_KEY = 'restaurantApp_compactView_vDynamicFinal_2';
+        const productsData = [
+    {
+        "id": "8YHLD4",
+        "name": "برقر لحم حاشي ترفل",
+        "category": "برقر",
+        "description": "",
+        "basePrice": 20,
+        "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiwJWXV5LxAQ-iuQuMP6zOMwF3gFAlEmL37hoggdLlRrV3n3flTBf5xjOHcPgKldXzyZ1DHXXxQ7qr8EmPstmEEUJ5dLBEDXPG4HWcdn7nJDwsZEYPbstDY4LbAoNMcWfvsa4fYvoFbTX2-mbVWXUA8CsvP5_Mbsb2St9q1Lk4D9-uHWYCsNlM_It4F3HOO/s1280/WhatsApp%20Image%202025-07-01%20at%208.56.59%20AM.jpeg"
+    },
+    {
+        "id": "W6HAUA",
+        "name": "برقر دجاج كرانشي",
+        "category": "برقر",
+        "description": "",
+        "basePrice": 15,
+        "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhs8d_sasTNmTemJZ-p1kiuxGTDl_8nKzAxHz7WjDfl4RtP9tB-RUEBV3HtDGeDaOlzYfBOcRciQYFeRHlQBtXeduuybKvHIhtvfgljfkh-PpTLVDaRdCq4nubsmsJIl75DGPZjUfnyDo91pxKrbViNigIvI0d-5lX68EsVoGTxnwd7ye-08byqVGMQi-6I/s828/WhatsApp%20Image%202025-07-01%20at%208.57.00%20AM%20(1).jpeg"
+    },
+    {
+        "id": "W6HAUA1",
+        "name": "برقر دجاج كرانشي بافلو",
+        "category": "برقر",
+        "description": "",
+        "basePrice": 17,
+        "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhs8d_sasTNmTemJZ-p1kiuxGTDl_8nKzAxHz7WjDfl4RtP9tB-RUEBV3HtDGeDaOlzYfBOcRciQYFeRHlQBtXeduuybKvHIhtvfgljfkh-PpTLVDaRdCq4nubsmsJIl75DGPZjUfnyDo91pxKrbViNigIvI0d-5lX68EsVoGTxnwd7ye-08byqVGMQi-6I/s828/WhatsApp%20Image%202025-07-01%20at%208.57.00%20AM%20(1).jpeg"
+    },
+    {
+        "id": "W6HAUA2",
+        "name": "برقر دجاج مشوي",
+        "category": "برقر",
+        "description": "",
+        "basePrice": 17,
+        "image": "https://cdn.salla.sa/DjlbE/3vPKoFSEgwF3DePUg7MV7IBSMTb7blKQY25T0ndE.jpg"
+    },
+    {
+        "id": "W6HAUA3",
+        "name": "بريوش دجاج كرانشي",
+        "category": "برقر",
+        "description": "",
+        "basePrice": 16,
+        "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh-iH337GZ3FJgEb6Gi529jjZrK4_ihRLr_GCW4VS9V-HRDPe457r078TaxnZq4v8pgqcqY8uzalCwEhZntOHG86oX0FB0XPXX8Xzvcav8vobTa96bbcdAkTQF_Q_yalSmykByueHUgygBKbS5ZSDQP1b8wtFlmjooxJckvjh_9LyFNieaxLTy6VL14h9WQ/s660/WhatsApp%20Image%202025-07-01%20at%208.56.59%20AM%20(3).jpeg"
+    },
+    {
+        "id": "W6HAUA4",
+        "name": "كرانشي فرايز",
+        "category": "المقبلات والبطاطس",
+        "description": "",
+        "basePrice": 15,
+        "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjtxOwjXyLVPcvav7RUhBSSrEsrLPptGpGb9Qrk20JtNQ0MS1x_O8V6b0U6WBycOlvFsGvvG1n36C5i_9AX6Rb0O0-VSwfZ-8TsOF_n-x_vF6mV25Qh3fqQ8DXxcybqKRElAqsDKCYkuOB99eybRNq23pHbIqDD1RZuuFSFXcYCsrGPUyG-ksPOo6xaYRys/s1280/WhatsApp%20Image%202025-07-01%20at%208.56.59%20AM%20(1).jpeg"
+    },
+    {
+        "id": "W6HAUA5",
+        "name": "فيلي دجاج",
+        "category": "المقبلات والبطاطس",
+        "description": "",
+        "basePrice": 15,
+        "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEicoo4U_NzGraIhRqqJH7XXzauWs4gmMdd86Wier4UdR818yTaMIFCz3BGmQyj8APgZPYyr_i_OTqUsgjHgdBUBErbVVffVfzomXWkWk5pZWSUJ-DQfRFT5TybQXmn2NVz6cI9GoeggSqFbyRMmnK_hoDUGdCTvrob5bfGft5qohqzK3B2sM_dPHzl8b4qu/s1280/WhatsApp%20Image%202025-07-01%20at%208.56.59%20AM%20(2).jpeg"
+    },
+    {
+        "id": "W6HAUA6",
+        "name": "صحن بطاطس مبهر",
+        "category": "المقبلات والبطاطس",
+        "description": "",
+        "basePrice": 6,
+        "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj4oXN_3irxfIDwlRMVTKEFU46sAr50iX_MB9w3iRUKt0O2jm-dDANIguApYt_OosM7Eu9Cgw_f_N_aYfN4Fjydu4YD2FQ8W9uo54armfNBo7GX2cweYPvq8P9kbG1AMnlauP8AwdjSUKD1EFFhfScsOsnDerZ_yZUycFS64WR6EabdIsSUqegw_H201lyq/s697/WhatsApp%20Image%202025-07-01%20at%208.57.00%20AM.jpeg"
+    },
+    {
+        "id": "W6HAUA7",
+        "name": "كوب بطاطس",
+        "category": "المقبلات والبطاطس",
+        "description": "",
+        "basePrice": 3,
+        "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj4oXN_3irxfIDwlRMVTKEFU46sAr50iX_MB9w3iRUKt0O2jm-dDANIguApYt_OosM7Eu9Cgw_f_N_aYfN4Fjydu4YD2FQ8W9uo54armfNBo7GX2cweYPvq8P9kbG1AMnlauP8AwdjSUKD1EFFhfScsOsnDerZ_yZUycFS64WR6EabdIsSUqegw_H201lyq/s697/WhatsApp%20Image%202025-07-01%20at%208.57.00%20AM.jpeg"
+    },
+    {
+        "id": "W6HAUA8",
+        "name": "صوص كوكتيل",
+        "category": "صوصات",
+        "description": "",
+        "basePrice": 3,
+        "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgfs_Q3jBy2H_NVaSrIli6pV8Z3-ndCriVymAIcX8FeDY4gdsCANuWl2JLZGXrNKklvB8CEt6ZKM9CpYRqy_raoQ_SIoqJszV8zbVGhajOnMxoYqs6XZAuiFlka5NlAgwZpFth70RRNAtq87bIWj1LYzJdJAWEJzaQAt7AuLILE869KGRAMQxnwLFxOWIVw/s868/WhatsApp%20Image%202025-07-01%20at%208.57.02%20AM.jpeg"
+    },
+    {
+        "id": "W6HAUA9",
+        "name": "صوص ديناميت",
+        "category": "صوصات",
+        "description": "",
+        "basePrice": 3,
+        "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgTwLnyjXEMj_A6bT6VH2mudTPHKBl8nSENZxYp9PmJhKZd52OjLkakitS89HaDYZ91DzBhGoWSlQBk5m7zIS1LRaJ5gh7S_Du1KqHq2AnUMhKIx5GCqNc5pGtvV8q-fYxMA6NwlZALcMRbWLv0vsZubZGiP_5pwW1MvySeR2cpUWNdkG1-OIDuvUbTIk3w/s975/WhatsApp%20Image%202025-07-01%20at%208.57.01%20AM%20(3).jpeg"
+    },
+    {
+        "id": "W6HAUA10",
+        "name": "صوص بافلو",
+        "category": "صوصات",
+        "description": "",
+        "basePrice": 3,
+        "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi03w6Z7_QsviqWW8qF-seV3_piqbUAT7V_i0-8PotVj350SAeHQVuCcud34e0CRqZ6djw8yjTyG04FQy4JtFglriRnNNBgbwj74TMV6tBV8mWPlfDuGtRrPXjXE9x4z-mX4K9SkZl2_-4QadYiLVANIyMmRSuZJohucIeYr93N6qlxFrIrH4EGp8QcDySB/s787/WhatsApp%20Image%202025-07-01%20at%208.57.01%20AM%20(4).jpeg"
+    },
+    {
+        "id": "W6HAUA11",
+        "name": "ببسسي ",
+        "category": "مشروبات",
+        "description": "",
+        "basePrice": 3,
+        "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjK9rohNNCVOeTF4vLyDiEYrq9LnbQv0DuAFoSsZvd9MGyGiGmT4J2XWjyqEfouBGErx8DOipwT5ToODb5Jf_K_CAgPKYNSeJ2ZA-3hvuUO5AqFu9EpXb-0qWV4BgJKkI7xIHk9pR51w6pYEgUJh4JemGoQzEJ3Mu8tDDbFXIrECx3hwjcHp_oywPwNelBp/s816/WhatsApp%20Image%202025-07-01%20at%208.57.00%20AM%20(2).jpeg"
+    },
+    {
+        "id": "W6HAUA12",
+        "name": "سفن اب ",
+        "category": "مشروبات",
+        "description": "",
+        "basePrice": 3,
+        "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjTXpz2P6mb1-N4-PUmZ-idIi7BkHCZq3SSEp7X2RhhmsnJkU5qHtpSSswE9bNxTwk-G-MfWbBFp5qecOwHYKZ7fBgvXSNjwYLBz_6pFKSsnyXFBsNVRSHKRF2XlqChWJ1SFDOh6AySqS3wMqO0_MRbVhGnqCwBM36V6oKoFPHxlc68WRzQkV_TSdRpUuaE/s816/WhatsApp%20Image%202025-07-01%20at%208.57.00%20AM%20(3).jpeg"
+    },
+    {
+        "id": "W6HAUA13",
+        "name": " حمضيات",
+        "category": "مشروبات",
+        "description": "",
+        "basePrice": 3,
+        "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiGDFpf9MskKKgl3Nu764e-jlPqicJhzFrpOvnR_g_w423lze0SG8dO38kHLjqJZ2DSUcDOeLMvsIM5TP1vJnUK4i5sKLQ06BBdzYMHnN58bTwqa0UzEqD9NLIWalNJjrgJuqVe3V7Ns6SEPoTV3B_A5IHsCqOGFd6tmqIYL1wdKL2GwSM7KDiE6NSKkc4J/s824/WhatsApp%20Image%202025-07-01%20at%208.57.01%20AM.jpeg"
+    },
+    {
+        "id": "W6HAUA14",
+        "name": "ميراندا برتقال ",
+        "category": "مشروبات",
+        "description": "",
+        "basePrice": 3,
+        "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhMOl-T6jKv1G6rMkJcVvIhtp71FR7z7hNiGv6OVw8DN8M6eHUwQ1vwAZOQ5YoJkVKAR9-S0eFJmggRtByvvtO_oqy5P-8m0GGk-Szvlfl93QRM-yIDc0zK-_qzGhYDKJCZfNMY2OSfpE6LbGuwpQvJ6jz6dMz2gDM4rf6EAWdXkgJaaiFTMNHGnxa9zStg/s979/WhatsApp%20Image%202025-07-01%20at%208.57.00%20AM%20(5).jpeg"
+    },
+    {
+        "id": "W6HAUA15",
+        "name": "ديو ",
+        "category": "مشروبات",
+        "description": "",
+        "basePrice": 3,
+        "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhMOl-T6jKv1G6rMkJcVvIhtp71FR7z7hNiGv6OVw8DN8M6eHUwQ1vwAZOQ5YoJkVKAR9-S0eFJmggRtByvvtO_oqy5P-8m0GGk-Szvlfl93QRM-yIDc0zK-_qzGhYDKJCZfNMY2OSfpE6LbGuwpQvJ6jz6dMz2gDM4rf6EAWdXkgJaaiFTMNHGnxa9zStg/s979/WhatsApp%20Image%202025-07-01%20at%208.57.00%20AM%20(5).jpeg"
+    },
+    {
+        "id": "W6HAUA16",
+        "name": "موية ",
+        "category": "مشروبات",
+        "description": "",
+        "basePrice": 1,
+        "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhauF27Rj5rMoYJzaOwPYuRXgC6EwZWOnoyM4Au7YSfs7MU_Khdj1XdgSB3gXb1NhxdFXjn8khQ2bnucnIODf_pFiQnOIVo3TnYKX0T0yfC-VKdy0SoupZ0NpYizR_Ku3OmdKgPpvVjnX5XQFlx6f2Z7aaEq0TKoxzq6c2OF57C0TBb7PNsiwyx-825gyiV/s786/WhatsApp%20Image%202025-07-01%20at%208.57.01%20AM%20(1).jpeg"
+    },
+    {
+        "id": "W6HAUA170",
+        "name": "عصيرربيع ",
+        "category": "مشروبات",
+        "description": "",
+        "basePrice": 2,
+        "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh2gBae28epHhb3yanDORUeo9RRoyxqp8wrlNijb_b6uOf43kDipTRyEVJvGU3Gj9MPSZdQ6m5a3j9DljRgEvy4Ih64VH4nrhw0Q5BbMk8wMjAA_JwwhoszDrDwXU1YeKIcrg8kDe76xJOhq6EpqjhqLtFp6FdQ2odiCX8HBqkXyqlaDdbZe5x_zcqkNH7D/s783/WhatsApp%20Image%202025-07-01%20at%208.57.01%20AM%20(2).jpeg"
+    },
+    {
+        "id": "W6HAUA17",
+        "name": "شاهي",
+        "category": "مشروبات ساخنة ",
+        "description": "",
+        "basePrice": 2,
+        "image": "https://awany.sa/wp-content/uploads/2024/02/%D9%83%D8%A7%D8%B3-%D8%B4%D8%A7%D9%8A-%D8%B4%D9%81%D8%A7%D9%81.webp"
+    },
+    {
+        "id": "W6HAUA18",
+        "name": "حليب شاهي",
+        "category": "مشروبات ساخنة ",
+        "description": "",
+        "basePrice": 3,
+        "image": "https://kota-food.com/wp-content/uploads/2024/09/Adani-Tea-cap.jpg"
+    },
+    {
+        "id": "W6HAUA19",
+        "name": "حليب نسكافيه",
+        "category": "مشروبات ساخنة ",
+        "description": "",
+        "basePrice": 3,
+        "image": "https://instalacarte.com/media/cache/mobile_image/product/1890/20887/925843950d22d653fbc2eece13abf8a4.jpeg"
+    },
+    {
+        "id": "W6HAUA20",
+        "name": "كوكتيل",
+        "category": "العصائر الطازجة",
+        "description": "",
+        "basePrice": 8,
+        "image": "https://cdn.altibbi.com/cdn/cache/1000x500/news/2011/05/10/542.jpg.webp"
+    },
+    {
+        "id": "W6HAUA21",
+        "name": "برتقال",
+        "category": "العصائر الطازجة",
+        "description": "",
+        "basePrice": 7,
+        "image": "https://cdn.salla.sa/ONjDa/b35286a5-122e-4461-9590-0fe3cc64f6a4-1000x1000-M3EK8MPBqVGAKyOpOEqahzgdpMsjwvlIoryoXCyU.png"
+    },
+    {
+        "id": "W6HAUA22",
+        "name": "بطيخ ",
+        "category": "العصائر الطازجة",
+        "description": "",
+        "basePrice": 7,
+        "image": "https://cdn.altibbi.com/cdn/cache/1000x500/image/2023/07/05/087637b07fc4b83e033bb7f5c02a5bfa.jpg.webp"
+    },
+    {
+        "id": "W6HAUA23",
+        "name": "شمام ",
+        "category": "العصائر الطازجة",
+        "description": "",
+        "basePrice": 7,
+        "image": "https://png.pngtree.com/png-vector/20240522/ourmid/pngtree-muskmelon-juice-for-goodness-isloated-on-transparent-background-png-image_12478904.png"
+    },
+    {
+        "id": "W6HAUA24",
+        "name": "مانجو ",
+        "category": "العصائر الطازجة",
+        "description": "",
+        "basePrice": 7,
+        "image": "https://png.pngtree.com/png-clipart/20220124/original/pngtree-mango-mango-juice-png-image_7199742.png"
+    },
+    {
+        "id": "W6HAUA25",
+        "name": "حليب موز",
+        "category": "العصائر الطازجة",
+        "description": "",
+        "basePrice": 10,
+        "image": "https://cdn.salla.sa/EaqVx/WBnqzVTVr2Ic6enrEdbhsofkdWFHLkIU2twpzHYV.jpg"
+    },
+    {
+        "id": "W6HAUA26",
+        "name": "جوافه مع حليب",
+        "category": "العصائر الطازجة",
+        "description": "",
+        "basePrice": 8,
+        "image": "https://eldolphinstore.com/storage/app/public/product/2024-02-18-65d27b377c281.webp"
+    },
+    {
+        "id": "W6HAUA27",
+        "name": "عصير تفاح",
+        "category": "العصائر الطازجة",
+        "description": "",
+        "basePrice": 7,
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStrNrrkYCddULxiXBBGVE7OTSzLe7VzYMCkbnFRNAE-KlqH8A-aLBLdOLJRAdorw60VlE&usqp=CAU"
+    },
+    {
+        "id": "W6HAUA28",
+        "name": "طبقات ",
+        "category": "العصائر الطازجة",
+        "description": "",
+        "basePrice": 10,
+        "image": "https://cdn.salla.sa/DjlbE/91fb9a7a-a814-407e-8926-535eb205ed91-500x365.36458333333-ewdI3wd4rAf5KKfn29CHdlF1n6IaMQzvXu0ZNOsO.jpg"
+    },
+    {
+        "id": "W6HAUA29",
+        "name": "فراولة ",
+        "category": "العصائر الطازجة",
+        "description": "",
+        "basePrice": 7,
+        "image": "https://i.pinimg.com/474x/9a/ca/10/9aca10faf04975dc2de5d77a7d8db481.jpg"
+    }
+];
 
-        let productsData = [];
-        let deliveryFee = 5;    
-        let VAT_RATE = 0.15;  
-        let MAX_TABLE_NUMBER = 10; 
-        let whatsappNumber = "966000000000"; 
-        let restaurantName = "مطعمك الرائع"; 
-        let contactAddress = "عنوان مطعمك هنا"; 
-        let contactPhone = "0500000000"; 
-        let footerTagline = "أشهى المأكولات تجدونها لدينا"; 
-
+        // DOM Elements
         const modalOverlay = document.getElementById('customization-modal-overlay');
+        const modalContent = document.getElementById('customization-modal-content');
         const modalCloseBtn = document.getElementById('modal-close-btn');
         const modalProductImage = document.getElementById('modal-product-image');
         const modalProductTitle = document.getElementById('modal-product-title');
@@ -756,13 +981,12 @@
         const modalCustomizationsContainer = document.getElementById('modal-customizations-container');
         const modalQuantityInput = document.getElementById('modal-quantity');
         const modalAddToCartBtn = document.getElementById('modal-add-to-cart-btn');
+
         const menuSectionsContainer = document.getElementById('menu-sections');
-        const noProductsMessageElement = document.getElementById('no-products-message');
         const filtersContainer = document.getElementById('filters-container');
         const cartItemsListElement = document.getElementById('cart-items-list');
         const cartSubtotalAmountElement = document.getElementById('cart-subtotal-amount');
         const cartVatAmountElement = document.getElementById('cart-vat-amount');
-        const vatRateDisplayElement = document.getElementById('vat-rate-display');
         const deliveryFeeLineElement = document.getElementById('delivery-fee-line');
         const deliveryFeeAmountElement = document.getElementById('delivery-fee-amount');
         const cartGrandTotalAmountElement = document.getElementById('cart-grand-total-amount');
@@ -778,57 +1002,28 @@
         const notificationMessage = document.getElementById('notification-message');
         const generalOrderNotesTextarea = document.getElementById('general-order-notes');
         const deliveryTypeRadios = document.querySelectorAll('input[name="deliveryType"]');
+        
+        // تمت الإضافة هنا: جلب عناصر اختيار الطاولة
         const tableSelectionContainer = document.getElementById('table-selection-container');
         const tableNumberSelect = document.getElementById('table-number-select');
+        // نهاية الإضافة
+
         const searchInput = document.getElementById('search-input');
         const toggleViewBtn = document.getElementById('toggle-view-btn');
-        const pageLoadingOverlay = document.getElementById('page-loading-overlay');
+
 
         let cart = [];
-        let currentDeliveryType = 'pickup'; 
+        let currentDeliveryType = 'pickup'; // Default to pickup as it's checked
         let currentProductIdInModal = null;
         let currentProductInModalObject = null;
         let notificationTimeout;
+        const whatsappNumber = "966538396355"; // !!! استبدل هذا برقمك الصحيح !!!
         let currentActiveFilter = 'all';
         let currentSearchTerm = '';
         let isCompactView = false;
 
-        function showPageLoading(message = "جاري تحميل قائمة الطعام اللذيذة...") {
-            if (pageLoadingOverlay) {
-                const loadingTextEl = pageLoadingOverlay.querySelector('#loading-text');
-                if(loadingTextEl) loadingTextEl.textContent = message;
-                pageLoadingOverlay.style.display = 'flex';
-            }
-        }
-
-        function hidePageLoading() {
-            if (pageLoadingOverlay) {
-                pageLoadingOverlay.style.display = 'none';
-            }
-        }
-        
-        function updateDOMWithSettings() {
-            document.title = `${restaurantName} - قائمة شاملة`;
-            const navbarBrand = document.querySelector('.navbar-brand');
-            if (navbarBrand) navbarBrand.innerHTML = `${restaurantName} <i class="fas fa-utensils"></i>`;
-            const footerRestaurantNameElements = document.querySelectorAll('.footer-restaurant-name, .footer-restaurant-name-bottom');
-            footerRestaurantNameElements.forEach(el => {
-                if(el) el.textContent = restaurantName;
-            });
-            const footerTaglineEl = document.querySelector('.footer-tagline');
-            if (footerTaglineEl) {
-                footerTaglineEl.textContent = footerTagline || '';
-                footerTaglineEl.style.display = footerTagline ? 'block' : 'none';
-            }
-            const footerAddressEl = document.getElementById('footer-address');
-            if (footerAddressEl) footerAddressEl.textContent = contactAddress || '';
-            const footerPhoneEl = document.getElementById('footer-phone');
-            if (footerPhoneEl) footerPhoneEl.textContent = contactPhone || '';
-            if (vatRateDisplayElement) vatRateDisplayElement.textContent = (VAT_RATE * 100).toFixed(0);
-        }
-
+        // تمت الإضافة هنا: دالة لملء خيارات أرقام الطاولات
         function populateTableNumbers() {
-            tableNumberSelect.innerHTML = '<option value="">-- اختر الطاولة --</option>'; 
             for (let i = 1; i <= MAX_TABLE_NUMBER; i++) {
                 const option = document.createElement('option');
                 option.value = i;
@@ -836,31 +1031,16 @@
                 tableNumberSelect.appendChild(option);
             }
         }
+        // نهاية الإضافة
 
         function saveCartToLocalStorage() {
-            try {
-                localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cart));
-            } catch (e) {
-                console.error("Error saving cart to localStorage:", e);
-                showNotification("خطأ في حفظ السلة. قد تكون مساحة التخزين ممتلئة.", false);
-            }
+            localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cart));
         }
 
         function loadCartFromLocalStorage() {
             const storedCart = localStorage.getItem(CART_STORAGE_KEY);
             if (storedCart) {
-                try {
-                    const parsedCart = JSON.parse(storedCart);
-                    if (Array.isArray(parsedCart) && parsedCart.every(item => typeof item === 'object' && item !== null && 'id' in item)) {
-                        cart = parsedCart;
-                    } else {
-                        throw new Error("Invalid cart structure in localStorage");
-                    }
-                } catch (e) {
-                    console.error("Error parsing cart from localStorage:", e);
-                    cart = [];
-                    localStorage.removeItem(CART_STORAGE_KEY); 
-                }
+                cart = JSON.parse(storedCart);
             } else {
                 cart = [];
             }
@@ -889,8 +1069,7 @@
 
         function displayFilterButtons() {
             filtersContainer.innerHTML = '';
-            if (!productsData || productsData.length === 0) return;
-            const categories = ['all', ...new Set(productsData.map(p => p.category).filter(Boolean))];
+            const categories = ['all', ...new Set(productsData.map(p => p.category))];
             categories.forEach(category => {
                 const button = document.createElement('button');
                 button.classList.add('filter-btn');
@@ -908,69 +1087,67 @@
         }
 
         function displayProducts() {
-            menuSectionsContainer.innerHTML = ''; 
-            noProductsMessageElement.style.display = 'none'; 
-            let productsToDisplay = productsData;
-            if (!productsToDisplay || productsToDisplay.length === 0) {
-                noProductsMessageElement.textContent = "لا توجد منتجات متاحة حاليًا في القائمة.";
-                noProductsMessageElement.style.display = 'block';
-                return;
-            }
+            menuSectionsContainer.innerHTML = '';
+            let filteredProducts = productsData;
+
             if (currentActiveFilter !== 'all' && currentActiveFilter) {
-                productsToDisplay = productsToDisplay.filter(p => p.category === currentActiveFilter);
+                filteredProducts = filteredProducts.filter(p => p.category === currentActiveFilter);
             }
+
             if (currentSearchTerm) {
                 const searchTermLower = currentSearchTerm.toLowerCase();
-                productsToDisplay = productsToDisplay.filter(p =>
-                    (p.name && p.name.toLowerCase().includes(searchTermLower)) ||
+                filteredProducts = filteredProducts.filter(p =>
+                    p.name.toLowerCase().includes(searchTermLower) ||
                     (p.description && p.description.toLowerCase().includes(searchTermLower)) ||
-                    (p.category && p.category.toLowerCase().includes(searchTermLower))
+                    p.category.toLowerCase().includes(searchTermLower)
                 );
             }
-            if (productsToDisplay.length === 0) {
-                noProductsMessageElement.textContent = "لا توجد منتجات تطابق بحثك أو الفلتر الحالي.";
-                noProductsMessageElement.style.display = 'block';
+
+            if (filteredProducts.length === 0) {
+                menuSectionsContainer.innerHTML = `<p style="text-align:center; padding: 20px; color: #777;">لا توجد منتجات تطابق بحثك أو الفلتر الحالي.</p>`;
                 return;
             }
-            const productsByCategory = productsToDisplay.reduce((acc, product) => {
-                if (!product.category) product.category = "أخرى"; 
+
+            const productsByCategory = filteredProducts.reduce((acc, product) => {
                 if (!acc[product.category]) {
                     acc[product.category] = [];
                 }
                 acc[product.category].push(product);
                 return acc;
             }, {});
+
             const displayOrderCategories = currentActiveFilter === 'all' || !currentActiveFilter
-                ? [...new Set(productsData.map(p => p.category || "أخرى"))] 
+                ? [...new Set(productsData.map(p => p.category))]
                 : [currentActiveFilter];
+
             displayOrderCategories.forEach(category => {
                 const productsInCategory = productsByCategory[category];
                 if (!productsInCategory || productsInCategory.length === 0) return;
+
                 const categorySection = document.createElement('div');
                 categorySection.classList.add('category-section');
                 const categoryTitle = document.createElement('h2');
                 categoryTitle.classList.add('category-title');
                 categoryTitle.textContent = category;
                 categorySection.appendChild(categoryTitle);
+
                 const productsGrid = document.createElement('div');
                 productsGrid.classList.add('products-grid');
+
                 productsInCategory.forEach(product => {
-                    if (!product || typeof product.basePrice === 'undefined') {
-                        console.warn("Skipping invalid product object:", product);
-                        return; 
-                    }
                     const productCard = document.createElement('div');
                     productCard.classList.add('product-card');
                     let actionButtonHTML = '';
-                    let priceDisplayHTML = `<p class="price">السعر: ${product.basePrice.toFixed(2)} ريال</p>`;
+                    let priceDisplayHTML = `<p class="price">السعر: ${product.basePrice} ريال</p>`;
                     if (product.customizations && product.customizations.length > 0) {
+                        priceDisplayHTML = `<p class="price">يبدأ من: ${product.basePrice} ريال</p>`;
                         actionButtonHTML = `<button class="customize-btn" onclick="openCustomizationModal('${product.id}')">حدد الخيارات <i class="fas fa-cog"></i></button>`;
                     } else {
                         actionButtonHTML = `<button class="direct-add-btn" onclick="addDirectToCart('${product.id}')">أضف للسلة <i class="fas fa-cart-plus"></i></button>`;
                     }
                     productCard.innerHTML = `
-                        <img src="${product.image || 'https://via.placeholder.com/200x150.png?text=No+Image'}" alt="${product.name || 'Product'}" loading="lazy">
-                        <h3>${product.name || 'اسم المنتج'}</h3>
+                        <img src="${product.image}" alt="${product.name}" loading="lazy">
+                        <h3>${product.name}</h3>
                         <p class="product-description">${product.description || ''}</p>
                         ${priceDisplayHTML}
                         ${actionButtonHTML}
@@ -983,12 +1160,8 @@
         }
 
         window.addDirectToCart = function(productId) {
-            const product = productsData.find(p => String(p.id) === String(productId));
-            if (!product) {
-                console.error("Product not found for direct add:", productId);
-                showNotification("عفواً، هذا المنتج غير متوفر حالياً.", false);
-                return;
-            }
+            const product = productsData.find(p => p.id === productId);
+            if (!product) return;
             const quantity = 1;
             const cartItemId = productId; 
             const existingItemIndex = cart.findIndex(item => item.cartItemId === cartItemId);
@@ -1008,32 +1181,28 @@
 
         function updateModalPrice() {
             if (!currentProductInModalObject) return;
-            let currentPrice = parseFloat(currentProductInModalObject.basePrice) || 0;
+            let currentPrice = currentProductInModalObject.basePrice;
             currentProductInModalObject.customizations?.forEach((group, groupIndex) => {
                 const groupElement = document.getElementById(`modal-group-${currentProductInModalObject.id}-${groupIndex}`);
                 if (!groupElement) return;
                 if (group.type === 'radio') {
                     const selectedRadio = groupElement.querySelector(`input[name="modal-${currentProductInModalObject.id}-${group.name}"]:checked`);
-                    if (selectedRadio && selectedRadio.dataset.price) currentPrice += parseFloat(selectedRadio.dataset.price);
+                    if (selectedRadio) currentPrice += parseFloat(selectedRadio.dataset.price);
                 } else if (group.type === 'checkbox') {
                     const checkedBoxes = groupElement.querySelectorAll(`input[name="modal-${currentProductInModalObject.id}-${group.name}"]:checked`);
-                    checkedBoxes.forEach(cb => { if(cb.dataset.price) currentPrice += parseFloat(cb.dataset.price) });
+                    checkedBoxes.forEach(cb => currentPrice += parseFloat(cb.dataset.price));
                 }
             });
             modalCurrentItemPrice.textContent = `السعر مع الاضافات: ${currentPrice.toFixed(2)} ريال`;
         }
 
         window.openCustomizationModal = function(productId) {
-            currentProductIdInModal = productId;
-            currentProductInModalObject = productsData.find(p => String(p.id) === String(productId));
-            if (!currentProductInModalObject) {
-                 console.error("Product not found for customization modal:", productId);
-                 showNotification("عفواً، تفاصيل هذا المنتج غير متوفرة.", false);
-                 return;
-            }
-            modalProductImage.src = currentProductInModalObject.image || 'https://via.placeholder.com/200x150.png?text=No+Image';
+             currentProductIdInModal = productId;
+            currentProductInModalObject = productsData.find(p => p.id === productId);
+            if (!currentProductInModalObject) return;
+            modalProductImage.src = currentProductInModalObject.image;
             modalProductTitle.textContent = currentProductInModalObject.name;
-            modalProductBasePrice.textContent = `السعر : ${(parseFloat(currentProductInModalObject.basePrice) || 0).toFixed(2)} ريال`;
+            modalProductBasePrice.textContent = `السعر : ${currentProductInModalObject.basePrice} ريال`;
             modalQuantityInput.value = 1;
             modalCustomizationsContainer.innerHTML = '';
             if (currentProductInModalObject.customizations) {
@@ -1052,11 +1221,11 @@
                         input.id = `modal-opt-${currentProductInModalObject.id}-${groupIndex}-${optIndex}`;
                         input.name = `modal-${currentProductInModalObject.id}-${group.name}`;
                         input.value = opt.value;
-                        input.dataset.price = parseFloat(opt.price) || 0; 
+                        input.dataset.price = opt.price;
                         input.addEventListener('change', updateModalPrice);
                         const label = document.createElement('label');
                         label.htmlFor = input.id;
-                        label.textContent = `${opt.text} ${(parseFloat(opt.price) || 0) > 0 ? `(+${(parseFloat(opt.price) || 0).toFixed(2)} ريال)` : ''}`;
+                        label.textContent = `${opt.text} ${opt.price > 0 ? `(+${opt.price} ريال)` : ''}`;
                         optionDiv.appendChild(input);
                         optionDiv.appendChild(label);
                         fieldset.appendChild(optionDiv);
@@ -1080,11 +1249,6 @@
         modalOverlay.addEventListener('click', function(event) {
             if (event.target === modalOverlay) closeCustomizationModal();
         });
-        document.addEventListener('keydown', function(event) {
-            if (event.key === "Escape" && modalOverlay.classList.contains('active')) {
-                closeCustomizationModal();
-            }
-        });
 
         modalAddToCartBtn.addEventListener('click', function() {
             if (!currentProductInModalObject) return;
@@ -1093,10 +1257,9 @@
             if (isNaN(quantity) || quantity <= 0) {
                 alert("الرجاء تحديد كمية صحيحة."); return;
             }
-            let itemPrice = parseFloat(product.basePrice) || 0;
+            let itemPrice = product.basePrice;
             const selectedCustomizations = [];
             let cartItemIdSuffix = '';
-            let allRequiredSelected = true;
             if (product.customizations) {
                 for (let i = 0; i < product.customizations.length; i++) {
                     const group = product.customizations[i];
@@ -1105,38 +1268,34 @@
                         console.error(`Group element not found: modal-group-${product.id}-${i}`);
                         continue;
                     }
-                    let groupSelectedAtLeastOne = false;
+                    let groupSelected = false;
                     if (group.type === 'radio') {
                         const selectedRadio = groupElement.querySelector(`input[name="modal-${product.id}-${group.name}"]:checked`);
                         if (selectedRadio) {
-                            itemPrice += parseFloat(selectedRadio.dataset.price || 0);
+                            itemPrice += parseFloat(selectedRadio.dataset.price);
                             selectedCustomizations.push({
                                 group: group.groupName, text: selectedRadio.labels[0].textContent.split(' (+')[0],
-                                price: parseFloat(selectedRadio.dataset.price || 0)
+                                price: parseFloat(selectedRadio.dataset.price)
                             });
                             cartItemIdSuffix += `-${selectedRadio.value}`;
-                            groupSelectedAtLeastOne = true;
+                            groupSelected = true;
+                        }
+                        if (group.required && !groupSelected) {
+                            alert(`الرجاء اختيار "${group.groupName}" لمنتج "${product.name}".`); return;
                         }
                     } else if (group.type === 'checkbox') {
                         const checkedBoxes = groupElement.querySelectorAll(`input[name="modal-${product.id}-${group.name}"]:checked`);
-                        if (checkedBoxes.length > 0) groupSelectedAtLeastOne = true;
                         checkedBoxes.forEach(cb => {
-                            itemPrice += parseFloat(cb.dataset.price || 0);
+                            itemPrice += parseFloat(cb.dataset.price);
                             selectedCustomizations.push({
                                 group: group.groupName, text: cb.labels[0].textContent.split(' (+')[0],
-                                price: parseFloat(cb.dataset.price || 0)
+                                price: parseFloat(cb.dataset.price)
                             });
                             cartItemIdSuffix += `-${cb.value}`;
                         });
                     }
-                    if (group.required && !groupSelectedAtLeastOne) {
-                        allRequiredSelected = false;
-                        alert(`الرجاء تحديد خيار من "${group.groupName}" لمنتج "${product.name}". هذا الحقل مطلوب.`);
-                        break; 
-                    }
                 }
             }
-            if (!allRequiredSelected) return; 
             const cartItemId = `${product.id}${cartItemIdSuffix}`;
             const existingItemIndex = cart.findIndex(item => item.cartItemId === cartItemId);
             if (existingItemIndex > -1) {
@@ -1154,9 +1313,8 @@
             closeCustomizationModal();
         });
 
-        function showNotification(message, isSuccess = true) { 
+        function showNotification(message) {
             notificationMessage.textContent = message;
-            notificationToast.style.backgroundColor = isSuccess ? '#982f34' : '#c0392b'; 
             notificationToast.classList.add('show');
             if (notificationTimeout) clearTimeout(notificationTimeout);
             notificationTimeout = setTimeout(() => notificationToast.classList.remove('show'), 3000);
@@ -1167,13 +1325,15 @@
             let subtotal = 0;
             let totalItemsCount = 0;
             const vatLineDetails = document.getElementById('vat-line-details');
+
             if (cart.length === 0) {
-                emptyCartMessage.style.display = 'list-item'; 
+                cartItemsListElement.appendChild(emptyCartMessage);
+                emptyCartMessage.style.display = 'block';
                 clearCartBtn.style.display = 'none';
                 if (vatLineDetails) vatLineDetails.style.display = 'none';
             } else {
-                emptyCartMessage.style.display = 'none'; 
-                clearCartBtn.style.display = 'flex'; 
+                emptyCartMessage.style.display = 'none';
+                clearCartBtn.style.display = 'block';
                 if (vatLineDetails) vatLineDetails.style.display = 'flex';
                 cart.forEach((item, index) => {
                     const listItem = document.createElement('li');
@@ -1181,7 +1341,7 @@
                     if (item.customizations && item.customizations.length > 0) {
                         customizationsText += '<div class="item-customizations">';
                         item.customizations.forEach(cust => {
-                            customizationsText += `<div>- ${cust.text}${cust.price > 0 ? ` (+${cust.price.toFixed(2)} ر.س)` : ''}</div>`;
+                            customizationsText += `<div>- ${cust.text}${cust.price > 0 ? ` (+${cust.price} ر.س)` : ''}</div>`;
                         });
                         customizationsText += '</div>';
                     }
@@ -1204,33 +1364,36 @@
                 });
             }
             cartSubtotalAmountElement.textContent = subtotal.toFixed(2);
+
             const vatAmount = (subtotal * VAT_RATE) / (1 + VAT_RATE); 
             if (cartVatAmountElement) cartVatAmountElement.textContent = vatAmount.toFixed(2);
+
             let currentDeliveryFee = 0;
             if (currentDeliveryType === 'delivery' && cart.length > 0) {
-                currentDeliveryFee = deliveryFee; 
+                currentDeliveryFee = deliveryFee;
                 deliveryFeeLineElement.style.display = 'flex';
                 deliveryFeeAmountElement.textContent = deliveryFee.toFixed(2);
             } else { 
                 deliveryFeeLineElement.style.display = 'none';
                 deliveryFeeAmountElement.textContent = '0';
             }
-            const grandTotal = subtotal + currentDeliveryFee; 
+            const grandTotal = subtotal + currentDeliveryFee;
             cartGrandTotalAmountElement.textContent = grandTotal.toFixed(2);
             cartCountBadge.textContent = totalItemsCount;
-            checkoutBtn.disabled = cart.length === 0; 
         }
 
         deliveryTypeRadios.forEach(radio => {
             radio.addEventListener('change', function() {
                 currentDeliveryType = this.value;
+                // تمت الإضافة هنا: إظهار/إخفاء قائمة اختيار الطاولة
                 if (currentDeliveryType === 'dine_in') {
                     tableSelectionContainer.style.display = 'block';
                 } else {
                     tableSelectionContainer.style.display = 'none';
-                    tableNumberSelect.value = ""; 
+                    tableNumberSelect.value = ""; // إعادة تعيين القيمة عند الإخفاء
                 }
-                updateCartDisplay(); 
+                // نهاية الإضافة
+                updateCartDisplay();
             });
         });
 
@@ -1256,6 +1419,7 @@
             cart = [];
             updateCartDisplay();
             saveCartToLocalStorage();
+            showNotification("سيتم تحويلك الى الواتساب فقط اضغط على ارسال");
             closeCartSidebar();
         }
 
@@ -1263,32 +1427,39 @@
             if (cart.length === 0) {
                 alert("سلة الطلبات فارغة. الرجاء إضافة وجبات أولاً."); return;
             }
+
+            // تمت الإضافة هنا: التحقق من اختيار الطاولة للطلب المحلي
             if (currentDeliveryType === 'dine_in' && !tableNumberSelect.value) {
                 alert("الرجاء اختيار رقم الطاولة للطلب المحلي.");
                 return;
             }
-            let message = `طلب جديد من ${restaurantName}:\n`;
+            // نهاية الإضافة
+
+            let message = "طلب جديد من مطعم غضن الذوق :\n";
             message += "--------------------\n";
-            let calculatedSubtotal = 0; 
+            let calculatedSubtotal = 0;
             cart.forEach((item, index) => {
                 const itemTotal = item.finalPricePerItem * item.quantity;
                 message += `\n${index + 1}. ${item.name}\n`;
                 if (item.customizations && item.customizations.length > 0) {
                     message += `  التخصيصات:\n`;
                     item.customizations.forEach(cust => {
-                        message += `    - ${cust.text}${cust.price > 0 ? ` (+${cust.price.toFixed(2)} ريال)` : ''}\n`;
+                        message += `    - ${cust.text}${cust.price > 0 ? ` (+${cust.price} ريال)` : ''}\n`;
                     });
                 }
                 message += `  الكمية: ${item.quantity}\n`;
-                message += `  السعر للقطعة (مع الإضافات): ${item.finalPricePerItem.toFixed(2)} ريال\n`;
+                message += `  السعر للقطعة: ${item.finalPricePerItem.toFixed(2)} ريال\n`;
                 message += `  إجمالي الصنف: ${itemTotal.toFixed(2)} ريال\n`;
                 calculatedSubtotal += itemTotal;
             });
             message += "\n--------------------\n";
             message += `المجموع الفرعي (شامل الضريبة): ${calculatedSubtotal.toFixed(2)} ريال\n`;
+
             const calculatedVatAmount = (calculatedSubtotal * VAT_RATE) / (1 + VAT_RATE);
-            message += `ضريبة القيمة المضافة (${(VAT_RATE * 100).toFixed(0)}%): ${calculatedVatAmount.toFixed(2)} ريال\n`;
+            message += `ضريبة القيمة المضافة (15%): ${calculatedVatAmount.toFixed(2)} ريال\n`;
+
             let finalTotalForMessage = calculatedSubtotal;
+
             if (currentDeliveryType === 'delivery') {
                 message += `نوع الطلب: توصيل للمنزل\n`;
                 message += `رسوم التوصيل: ${deliveryFee.toFixed(2)} ريال\n`;
@@ -1297,22 +1468,23 @@
                 message += `نوع الطلب: استلام من المطعم\n`;
             } else if (currentDeliveryType === 'dine_in') {
                 message += `نوع الطلب: طلب محلي\n`;
+                // تمت الإضافة هنا: إضافة رقم الطاولة للرسالة
                 message += `رقم الطاولة: ${tableNumberSelect.value}\n`;
+                // نهاية الإضافة
             }
+            
             const generalNotes = generalOrderNotesTextarea.value.trim();
             if (generalNotes) {
                 message += `\nملاحظات عامة:\n${generalNotes}\n`;
             }
             message += `\n--------------------\n`;
             message += `الإجمالي الكلي للطلب: ${finalTotalForMessage.toFixed(2)} ريال\n\n`;
-            message += `شكراً لطلبك من ${restaurantName}!`;
-            const encodedMessage = encodeURIComponent(message);
-            const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
-            showNotification("جاري تحويلك إلى واتساب لإرسال الطلب...");
-            setTimeout(() => {
-                emptyCartAfterCheckout(); 
-                window.open(whatsappUrl, '_blank'); 
-            }, 1500); 
+
+     
+
+            const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_self'); 
+            emptyCartAfterCheckout();
         });
 
         function openCartSidebar() {
@@ -1332,11 +1504,6 @@
                 closeCartSidebar();
             }
         });
-         document.addEventListener('keydown', function(event) {
-            if (event.key === "Escape" && cartSidebar.classList.contains('open')) {
-                closeCartSidebar();
-            }
-        });
 
         searchInput.addEventListener('input', function() {
             currentSearchTerm = this.value.trim();
@@ -1348,6 +1515,7 @@
             document.body.classList.toggle('compact-view', isCompactView);
             this.classList.toggle('active-compact-view', isCompactView);
             saveViewPreference();
+
             if (isCompactView) {
                 this.innerHTML = '<i class="fas fa-th-list"></i>';
                 this.title = "عرض عادي";
@@ -1356,121 +1524,17 @@
                 this.title = "عرض مضغوط";
             }
         });
-        
-        async function initializeApp() {
-            showPageLoading("الرجاء الانتظار .....");
-            console.log("initializeApp: Starting data fetch...");
 
-            let response;
-            let rawText = "";
-            let data = null;
+        // Initial Load
+        populateTableNumbers(); // تمت الإضافة هنا: استدعاء دالة ملء أرقام الطاولات
+        loadCartFromLocalStorage();
+        loadViewPreference();
+        displayFilterButtons();
+        displayProducts();
+        updateCartDisplay();
 
-            try {
-                console.log("initializeApp: Attempting fetch with mode: 'cors' (default)");
-                response = await fetch(GOOGLE_SCRIPT_API_URL);
-                console.log("initializeApp: Fetch (cors) response status:", response.status);
-
-                if (!response.ok) {
-                    const errorText = await response.text(); // Try to get error text from server
-                    console.error(`initializeApp: Fetch (cors) failed with HTTP status ${response.status}. Server response: ${errorText}`);
-                    throw new Error(`HTTP error ${response.status}: ${response.statusText}. Server: ${errorText.substring(0,100)}`);
-                }
-                rawText = await response.text();
-                console.log("initializeApp: Fetch (cors) successful. Raw text length:", rawText.length);
-
-            } catch (corsError) {
-                console.warn("initializeApp: Fetch with mode: 'cors' failed. Error:", corsError);
-                // إذا فشل بسبب CORS، جرب 'no-cors' كحل بديل
-                if (corsError.name === 'TypeError' || (corsError.message && corsError.message.toLowerCase().includes('cors'))) { // More specific check for CORS-like errors
-                    console.log("initializeApp: CORS error detected, trying fetch with mode: 'no-cors'");
-                    try {
-                        response = await fetch(GOOGLE_SCRIPT_API_URL, { mode: 'no-cors' });
-                        console.log("initializeApp: Fetch (no-cors) request sent.");
-                        // مع 'no-cors'، لا يمكننا فحص response.status أو response.ok.
-                        // نفترض أن الرد وصل ونحاول قراءته.
-                        rawText = await response.text();
-                        console.log("initializeApp: Fetch (no-cors) successful. Raw text length:", rawText.length);
-                         if (!rawText || rawText.trim() === "") {
-                            console.error("initializeApp: Fetch (no-cors) returned empty text. This is unexpected if the URL works directly.");
-                            // لا ترمي خطأ هنا مباشرة، دع المعالجة اللاحقة تقرر
-                        }
-                    } catch (noCorsError) {
-                        console.error("initializeApp: Fetch with mode: 'no-cors' also failed. Error:", noCorsError);
-                        throw new Error("Both fetch attempts failed. Last error (no-cors): " + noCorsError.message); // Throw the last error
-                    }
-                } else {
-                    // خطأ آخر غير CORS
-                    throw corsError;
-                }
-            }
-
-            // الآن حاول تحليل البيانات
-            try {
-                if (!rawText || rawText.trim() === "") {
-                    console.warn("initializeApp: Raw text for JSON parsing is empty.");
-                    // لا ترمي خطأ هنا إذا كان الفشل من no-cors، قد يكون هذا هو السلوك المتوقع
-                    // إذا كان الفشل من cors mode، فقد يكون هذا خطأ فعلي.
-                    // سيتم استخدام القيم الافتراضية.
-                } else {
-                    const jsonText = rawText.replace(/^\/\*\*\/\s*\n*/, ''); 
-                    console.log("initializeApp: Cleaned JSON text (first 200 chars):", jsonText.substring(0,200));
-                    data = JSON.parse(jsonText);
-                    console.log("initializeApp: JSON parsed successfully.");
-
-                    if (data.error) {
-                        console.error("initializeApp: Error from backend API after parsing:", data.error);
-                        showNotification("خطأ في تحميل بيانات القائمة من الخادم: " + data.error, false);
-                        data = null; // Set to null to use defaults
-                    }
-                }
-            } catch (parseError) {
-                console.error("initializeApp: Failed to parse JSON response. Error:", parseError);
-                console.error("initializeApp: Raw text received that failed parsing (first 500 chars):", rawText.substring(0,500));
-                showNotification("خطأ في تحليل بيانات القائمة من الخادم. تأكد من صحة البيانات في Google Sheet.", false);
-                data = null; // Set to null to use defaults
-            }
-
-
-            // استخدام البيانات المحملة أو القيم الافتراضية
-            if (data && data.products) {
-                productsData = data.products.filter(p => p && typeof p.id !== 'undefined' && typeof p.basePrice !== 'undefined');
-                console.log("initializeApp: Products loaded:", productsData.length);
-            } else {
-                console.warn("initializeApp: No products data loaded or data was invalid, using default empty array.");
-                productsData = [];
-            }
-
-            if (data && data.settings) {
-                console.log("initializeApp: Settings loaded from API:", data.settings);
-                deliveryFee = parseFloat(data.settings.deliveryFee) || deliveryFee;
-                VAT_RATE = parseFloat(data.settings.vatRate) || VAT_RATE;
-                MAX_TABLE_NUMBER = parseInt(data.settings.maxTableNumber) || MAX_TABLE_NUMBER;
-                whatsappNumber = data.settings.whatsappNumber || whatsappNumber;
-                restaurantName = data.settings.restaurantName || restaurantName;
-                contactAddress = data.settings.contactAddress || contactAddress;
-                contactPhone = data.settings.contactPhone || contactPhone;
-                footerTagline = data.settings.footerTagline || "";
-            } else {
-                 console.warn("initializeApp: No settings data loaded or data was invalid, using default values.");
-            }
-            
-            // تحديث واجهة المستخدم دائمًا
-            updateDOMWithSettings();
-            populateTableNumbers();
-            loadCartFromLocalStorage();
-            loadViewPreference();
-            displayFilterButtons();
-            displayProducts(); 
-            updateCartDisplay(); 
-            
-            const currentYearElement = document.getElementById('current-year');
-            if (currentYearElement) currentYearElement.textContent = new Date().getFullYear();
-            
-            hidePageLoading();
-            console.log("initializeApp: Initialization complete.");
-        }
-
-        document.addEventListener('DOMContentLoaded', initializeApp);
+        // إضافة السنة الحالية إلى التذييل
+        document.getElementById('current-year').textContent = new Date().getFullYear();
     </script>
 </body>
 </html>
