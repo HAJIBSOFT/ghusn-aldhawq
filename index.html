@@ -647,12 +647,8 @@
             <textarea id="general-order-notes" placeholder="ملاحظات إضافية على الطلب"></textarea>
 
             <div class="summary-line">
-                <span>المجموع الفرعي (شامل الضريبة):</span>
+                <span>الإجمالي :</span>
                 <span id="cart-subtotal-amount">0</span> ريال
-            </div>
-            <div class="summary-line vat-line" id="vat-line-details" style="display: none;">
-                <span>ضريبة القيمة المضافة (15%):</span>
-                <span id="cart-vat-amount">0</span> ريال
             </div>
 
             <div class="summary-line" id="delivery-fee-line" style="display: none;">
@@ -709,7 +705,7 @@
     <script>
         const deliveryFee = 5;
         const CART_STORAGE_KEY = 'restaurantAppCart_vFinalCompleteWithFooterFixed';
-        const VAT_RATE = 0.15;
+        const VAT_RATE = 0;
         const COMPACT_VIEW_STORAGE_KEY = 'restaurantApp_compactView'; // لتخزين تفضيل العرض
         const MAX_TABLE_NUMBER = 10; // أقصى رقم طاولة
 
@@ -1455,10 +1451,7 @@
                 calculatedSubtotal += itemTotal;
             });
             message += "\n--------------------\n";
-            message += `المجموع الفرعي (شامل الضريبة): ${calculatedSubtotal.toFixed(2)} ريال\n`;
-
-            const calculatedVatAmount = (calculatedSubtotal * VAT_RATE) / (1 + VAT_RATE);
-            message += `ضريبة القيمة المضافة (15%): ${calculatedVatAmount.toFixed(2)} ريال\n`;
+          
 
             let finalTotalForMessage = calculatedSubtotal;
 
